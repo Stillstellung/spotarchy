@@ -2,19 +2,17 @@
 OCR enabled planespotting photo archiving tool
 
 **Installation**
-install the requirements dot txt
-run app.py 
-localhost:5000
-profit!
+* install the requirements dot txt
+* run app.py 
+* localhost:5000
+* profit!
 
 **Configuration**
-you need a config.json with an api key to aerodatabox - https://api.market/store/aedbx/aerodatabox - like so:
+* you need a config.json with an api key to aerodatabox - https://api.market/store/aedbx/aerodatabox - like so:
 
-{
-    "api_token": "keykeykey"
-}
+`{ "api_token": "keykeykey" }`
 
-Their free tier is sufficient for this
+* Their free tier is sufficient for this
 
 **Features**
 Upload photo, recognizes registration, gives you some data from the API on the plane
