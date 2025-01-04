@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='material.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        // Enable "Upload and Process" button when a file is selected
+        function fileSelected(event) {
+            const fileInput = document.getElementById('file-upload');
+            const processButton = document.getElementById('process-button');
+            processButton.disabled = !fileInput.files.length;
+        }
+    </script>
+    <title>Airplane OCR</title>
+</head>
+<body>
+    <div class="container">
+        {% if output_image %}
+        <div class="result">
+            <div class="tile-container">
+                {% for bbox, text, confidence, details in results %}
+                <div class="mdl-card mdl-shadow--2dp tile">
+                    <div class="mdl-card__title">
+                        <h2 class="centered-text">{{ text }}</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text confidence-text">
+                        Confidence: {{ "%.2f"|format(confidence) }}
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Type: {{ details.typeName }}
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Airline: {{ details.airlineName }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <p class="execution-time">Execution Time: {{ execution_time }} seconds</p>
+            <img src="{{ output_image }}" alt="Processed Image" class="processed-image">
+            <a href="/" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent upload-another">
+                Upload Another
+            </a>
+        </div>
+        {% else %}
+        <form id="upload-form" action="/" method="POST" enctype="multipart/form-data">
+            <div class="upload">
+                <label for="file-upload" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                    Choose Image
+                </label>
+                <input id="file-upload" type="file" name="file" style="display: none;" onchange="fileSelected(event)">
+            </div>
+            <button id="process-button" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" disabled>
+                Upload and Process
+            </button>
+        </form>
+        {% endif %}
+    </div>
+</body>
+</html>
