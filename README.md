@@ -15,7 +15,7 @@ OCR enabled planespotting photo archiving tool
 * Their free tier is sufficient for this
 
 **Features**
-Upload photo, recognizes registration, gives you some data from the API on the plane
+* Upload photo, recognizes registration, gives you some data from the API on the plane
 
 **To Do**
-Configurable to your flickr account and some database or json output to "log" your planespot and post to flickr with a configurable caption format
+* Configurable to your flickr account and some database or json output to "log" your planespot and post to flickr with a configurable caption format
