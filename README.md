@@ -19,3 +19,5 @@ OCR enabled planespotting photo archiving tool
 
 **To Do**
 * Configurable to your flickr account and some database or json output to "log" your planespot and post to flickr with a configurable caption format
+* the detection functions i wrote are sorta janky tbh, a lot to improve there to rule out less failures 
+
